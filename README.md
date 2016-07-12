@@ -1,29 +1,30 @@
-Summary:
+**Summary:**
 
 The Dinner Button is running on a Raspberry Pi. A momentary push button triggers a python script using GPIO. When the button is pressed at dinner time on weekdays, a webcam takes a picture of the kitchen counter and attaches it to an all agency email. The button also has an LED in it that responds when the button is pressed, and whenever the script starts up.
 
 /////////
 
-Debugging:
+**Debugging:**
 
 
-The button is active between 7 and 9pm. If you press it at any other time, the button will light up once to let you know it heard the push, but it\'92s not dinner time. 
+The button is active between 7 and 9pm. If you press it at any other time, the button will light up once to let you know it heard the push, but it's not dinner time. 
 
 If you press it between 7 and 9, the light will blink 3 times quickly, letting you know it thinks its taking a picture and sending an email. If no all agency email is sent, try restarting the raspberry pi.
 
 
-Restart:
+**Restart:**
 
-Most issues will be solved by restarting the raspberry pi. There is a second tiny push button on a perf board sitting on top of the raspberry pi that initiates a safe shutdown. Press hold it for 5 seconds. This will trigger a safe shutdown of the pi. The status lights will flash a bit then all but the pwr light will go off. Unplug the power cable (micro usb) for a minute, then plug it back in.\
+Most issues will be solved by restarting the raspberry pi. There is a second tiny push button on a perf board sitting on top of the raspberry pi that initiates a safe shutdown. Press hold it for 5 seconds. This will trigger a safe shutdown of the pi. The status lights will flash a bit then all but the pwr light will go off. Unplug the power cable (micro usb) for a minute, then plug it back in.
 
 Don't just yank the power cable, this can brick the sd card.
 
 When the pi starts up again, it will auto launch the dinner button script. You should see the button light blink twice to indicate this has happened. 
 
 
-Gmail:
+**Gmail:**
 
 If this doesn't work, check its d5 gmail account and see if there are any bounced messages.
+
 login: dinnerbutton@droga5.com
 password : thedinnerbutton
 
@@ -34,13 +35,13 @@ Contact IT if there are sent messages that bounced.
 Network:
 
 The Dinner Button is assigned a static ip address
-192.168.9.118
+**192.168.9.118**
 
 You can ssh into it from the Droga5 offices
 $ ssh pi@192.168.9.118
 password: raspberry
 
-There is a directory called dinnersHere on the desktop. inside that folder you\'92ll find a couple of scripts that test individual parts of the system - camera, button, email\'85 there is also a folder of images, and a couple of other images.
+There is a directory called dinnersHere on the desktop. inside that folder you'll find a couple of scripts that test individual parts of the system - camera, button, email... there is also a folder of images taken by the webcam, and a couple of other images.
 
 dinnersHere_live.py is the active code running the dinner button. 
 
