@@ -25,7 +25,7 @@ When the pi starts up again, it will auto launch the dinner button script. You s
 
 If this doesn't work, check its d5 gmail account and see if there are any bounced messages.
 
-login: dinnerbutton@droga5.com 
+login: dinnerbutton@droga5.com <br />
 password : thedinnerbutton
 
 Contact IT if there are sent messages that bounced.
