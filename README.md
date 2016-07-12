@@ -25,20 +25,20 @@ When the pi starts up again, it will auto launch the dinner button script. You s
 
 If this doesn't work, check its d5 gmail account and see if there are any bounced messages.
 
-login: dinnerbutton@droga5.com
+login: dinnerbutton@droga5.com 
 password : thedinnerbutton
 
 Contact IT if there are sent messages that bounced.
 
-2 step authentication is currently going to my phone (Catherine's - 413.320.3267 in case someone needs to contact me about this)
+2 step authentication is currently going to catherine's phone (Catherine's - 413.320.3267 in case someone needs to contact me about this)
 
-Network:
+**Network:**
 
-The Dinner Button is assigned a static ip address
+The Dinner Button is assigned a static ip address: 
 **192.168.9.118**
 
-You can ssh into it from the Droga5 offices
-$ ssh pi@192.168.9.118
+You can ssh into it from the Droga5 offices 
+$ ssh pi@192.168.9.118 
 password: raspberry
 
 There is a directory called dinnersHere on the desktop. inside that folder you'll find a couple of scripts that test individual parts of the system - camera, button, email... there is also a folder of images taken by the webcam, and a couple of other images.
@@ -51,45 +51,45 @@ It sends emails with attachments using mpack.
 
 The script is set to send debug emails to the button's maintainer - debugEmailRecipient. When the script starts debugEmailRecipient will receive an email with a snapshot taken at startup. They will also get an email every weekday at 7pm when the button activates.
 
-Check currently running python scripts with
+Check currently running python scripts with 
 $ ps aux | grep python
 
 you should see 5 items, something like:
 
-root      2268  0.0  0.5   3608  2260 ?        S    14:28   0:00 sudo python /home/pi/bin/shutdown.py
-root      2269  0.0  0.5   3608  2236 ?        S    14:28   0:00 sudo python /home/pi/dinnersHere/dinnersHere_live.py
-root      2278  0.1  1.1   6620  5300 ?        S    14:28   0:00 python /home/pi/bin/shutdown.py
-root      2279 90.4  1.2   7128  5556 ?        R    14:28   2:50 python /home/pi/dinnersHere/dinnersHere_live.py
-pi        2329  0.0  0.4   3552  1832 pts/0    S+   14:31   0:00 grep --color=auto python
+root      2268  0.0  0.5   3608  2260 ?        S    14:28   0:00 sudo python /home/pi/bin/shutdown.py 
+root      2269  0.0  0.5   3608  2236 ?        S    14:28   0:00 sudo python /home/pi/dinnersHere/dinnersHere_live.py 
+root      2278  0.1  1.1   6620  5300 ?        S    14:28   0:00 python /home/pi/bin/shutdown.py 
+root      2279 90.4  1.2   7128  5556 ?        R    14:28   2:50 python /home/pi/dinnersHere/dinnersHere_live.py 
+pi        2329  0.0  0.4   3552  1832 pts/0    S+   14:31   0:00 grep --color=auto python 
 
 because the dinner button and the shutdown button use GPIO, they need to be run as root. You will see two processes for each script. 
 
-restart the dinner button script by killing the process
+restart the dinner button script by killing the process 
 $ sudo kill 2269
 
-then launch it again and run in the background.
+then launch it again and run in the background. 
 $ sudo python dinnersHere_live.py &
 
 The script will start, the led will blink, debugEmailRecipient will get an email with a picture attached.
 
 ////////
 
-More Network Issues?
+**More Network Issues?**
 
 If you can't ssh into the pi, or ping 192.168.9.118, contact IT.
 
 You can also do a port scan to see if you can find it anywhere on the network. I use nmap then search for its MAC Address: 00:E0:4C:04:F1:AC
 
 $ sudo map -v -sP 192.168.9.0/24
-.
-.
-.
-Nmap scan report for 192.168.9.118
-Host is up (0.14s latency).
-MAC Address: 00:E0:4C:04:F1:AC (Realtek Semiconductor)
-.
-.
-.
+. 
+. 
+. 
+Nmap scan report for 192.168.9.118 
+Host is up (0.14s latency). 
+MAC Address: 00:E0:4C:04:F1:AC (Realtek Semiconductor) 
+. 
+. 
+. 
 
-Drogue has 192.168.9.0/24, 192.168.10.0/24, 192.168.11.0/24, 192.168.12.0/24 (maybe more at this point)
+Droga has 192.168.9.0/24, 192.168.10.0/24, 192.168.11.0/24, 192.168.12.0/24 (maybe more at this point)
 If its IP has changed, ask someone in IT.
