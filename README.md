@@ -14,7 +14,7 @@ If you press it between 7 and 9, the light will blink 3 times quickly, letting y
 
 **Restart:**
 
-Most issues will be solved by restarting the raspberry pi. There is a second tiny push button on a perf board sitting on top of the raspberry pi that initiates a safe shutdown. Press hold it for 5 seconds. This will trigger a safe shutdown of the pi. The status lights will flash a bit then all but the pwr light will go off. Unplug the power cable (micro usb) for a minute, then plug it back in.
+Most issues will be solved by restarting the raspberry pi. There is a second tiny push button on a perf board sitting on top of the raspberry pi that initiates a safe shutdown. Press hold it for 5 seconds. The status lights will flash a bit then all but the pwr light will go off. Unplug the power cable (micro usb) for a minute, then plug it back in.
 
 Don't just yank the power cable, this can brick the sd card.
 
@@ -37,17 +37,13 @@ Contact IT if there are sent messages that bounced.
 The Dinner Button is assigned a static ip address:<br /> 
 **192.168.9.118**
 
-You can ssh into it from the Droga5 offices 
+You can ssh into it from the Droga5 offices <br />
 $ ssh pi@192.168.9.118 <br />
 password: raspberry
 
 There is a directory called dinnersHere on the desktop. inside that folder you'll find a couple of scripts that test individual parts of the system - camera, button, email... there is also a folder of images taken by the webcam, and a couple of other images.
 
 dinnersHere_live.py is the active code running the dinner button. 
-
-It uses GPIO to talk to the buttons and LED. <br />
-It takes pictures with the webcam using fswebcam <br />
-It sends emails with attachments using mpack.
 
 The script is set to send debug emails to the button's maintainer - debugEmailRecipient. When the script starts debugEmailRecipient will receive an email with a snapshot taken at startup. They will also get an email every weekday at 7pm when the button activates.
 
@@ -62,7 +58,7 @@ root      2278  0.1  1.1   6620  5300 ?        S    14:28   0:00 python /home/pi
 root      2279 90.4  1.2   7128  5556 ?        R    14:28   2:50 python /home/pi/dinnersHere/dinnersHere_live.py <br />
 pi        2329  0.0  0.4   3552  1832 pts/0    S+   14:31   0:00 grep --color=auto python <br />
 
-because the dinner button and the shutdown button use GPIO, they need to be run as root. You will see two processes for each script. 
+Because the dinner button and the shutdown button use GPIO, they need to be run as root. You will see two processes for each script. 
 
 restart the dinner button script by killing the process <br />
 $ sudo kill 2269
