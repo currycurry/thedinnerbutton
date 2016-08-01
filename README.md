@@ -64,7 +64,7 @@ restart the dinner button script by killing the process <br />
 $ sudo kill 2269
 
 then launch it again and run in the background. <br />
-$ sudo python dinnersHere_live.py &
+$ sudo python dinnersHere/dinnersHere_live.py &
 
 The script will start, the led will blink, debugEmailRecipient will get an email with a picture attached.
 
@@ -76,7 +76,7 @@ If you can't ssh into the pi, or ping 192.168.9.118, contact IT.
 
 You can also do a port scan to see if you can find it anywhere on the network. I use nmap then search for its MAC Address: 00:E0:4C:04:F1:AC
 
-$ sudo map -v -sP 192.168.9.0/24<br />
+$ sudo nmap -v -sP 192.168.9.0/24<br />
 . <br />
 . <br />
 . <br />
